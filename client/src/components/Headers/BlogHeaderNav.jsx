@@ -84,8 +84,8 @@ const BlogHeaderNav = () => {
           <div className="mb-4 pb-md-4 mx-auto text-center w3-padding-64">
             <div className="w3-container w3-content ">
               <div className="row justify-content-center align-items-center">
-                <div className="col-sm-12 col-md-3 col-lg-3"></div>
-                <div className="col-sm-12 col-md-9 col-lg-9">
+                <div className="col-sm-12 col-md-1 col-lg-1"></div>
+                <div className="col-sm-12 col-md-11 col-lg-11">
                   <h1 className="display-4 fw-normal text-white text-body-emphasis pb-0 mb-0">
                     <span
                       style={{
@@ -121,15 +121,16 @@ const BlogHeaderNav = () => {
                       Design & Development{" "}
                     </i>
                   </h2>
-                  <p
-                    className="fs-5 text-body-secondary text-white w3-margin-top"
+                  <h5
+                    className="text-body-secondary text-white fw-light w3-margin-top fw-regular"
                     style={{ textShadow: "0 0 2px black, 0 0 4px black" }}
                   >
-                    The dual nature of technology! Join us as we navigate the
-                    exciting and ever-evolving landscape of design and
-                    development, showcasing the two faces of technology that
-                    shape our digital world.
-                  </p>
+              Technology's dual nature is a fascinating blend of  <br />
+               <span className="text-decoration w3-text-aqua"> <i><b>INNOVATION & EVOLUTION</b></i> </span>
+                  of <span className="text-decoration w3-text-aqua"> <i><b>DESIGN & DEVELOPMENT</b></i></span> presents <span className="text-decoration w3-text-aqua"><i><b>TWO DISTINCT</b></i></span> yet
+                  interconnected aspects that shape our digital world. 
+                  Posts highlight the topics and trends that captivate my curiosity.
+                  </h5>
                   <div className="p-2">
                     <ScrollLink
                       to="email-graphics"
