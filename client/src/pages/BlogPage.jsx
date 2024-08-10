@@ -48,11 +48,11 @@ const BlogPage = ({ currentArticleIndex, setCurrentArticleIndex }) => {
         <div className="row g-3 justify-content-center ">
           <div className="col-md-8">
             {/* Pagination */}
-            <div className="container-fluid d-flex justify-content-center w3-padding-large">
+            <div className="container-fluid d-flex justify-content-center w3-padding-large w3-padding-top-24">
               <div className="container-fluid d-flex flex-column align-items-center">
                 {/* Render selected article */}
                 <div className='article-render'>
-                  <div className="w-100 w3-padding-top-32" ref={articleRef}>
+                  <div className="w-100" ref={articleRef}>
                     {articles[currentArticleIndex].component}
                   </div>
                 </div>
@@ -84,7 +84,6 @@ const BlogPage = ({ currentArticleIndex, setCurrentArticleIndex }) => {
          
   <div className="position-sticky justify-content-center align-items-center">
 <div className="w3-padding-large w3-padding-top-24">
-<h3 className="text-black mt-2 mb-3">RECENT POSTS</h3>
 <div className='w3-black'>
    {/** 
   <div className="card w3-black w-100 justify-content-center align-items-center">
@@ -99,9 +98,10 @@ const BlogPage = ({ currentArticleIndex, setCurrentArticleIndex }) => {
                 </div>
             </div>
    Recent Posts container */}
-    <div className="card w3-black recent-posts-container mt-1">
-
+    <div className="card w3-black recent-posts-container">
+ 
 <div className='w3-padding-large w3-padding-top-16 justify-content-center align-items-center'>
+<h3 className="mb-3 mt-3">RECENT POSTS</h3>
       <ul className="list-unstyled">
         <li>
           <div
