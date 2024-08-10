@@ -1,109 +1,319 @@
-import React from 'react';
-import Algo from '../../../assets/images/Posts/Algos.jpeg';
+import React from "react";
+import Algo from "../../../assets/images/Posts/Algos.jpeg";
+import { FaShare } from "react-icons/fa6";
+import { MdOutlineAddLink } from "react-icons/md";
+
 
 const Article1 = () => {
 
-    return (
-        <div className='article1' id='article1'>
-           <style>
-                {`
+  const articleTitle = "Understanding SEO: The Process, Analytics, and a Sample Strategy";
+    const articleURL = window.location.href;
+    const articleImage = Algo;
+
+    const handleShare = () => {
+        if (navigator.share) {
+            navigator.share({
+                title: articleTitle,
+                text: 'Check out this article on data analytics!',
+                url: articleURL,
+                files: [
+                    new File([articleImage], "analytics.jpg", {
+                        type: "image/jpeg",
+                    })
+                ]
+            }).then(() => {
+                console.log('Thanks for sharing!');
+            }).catch((error) => {
+                console.error('Something went wrong sharing the article:', error);
+            });
+        } else {
+            alert('Sharing is not supported on this browser.');
+        }
+    };
+
+    const handleCopyLink = () => {
+        navigator.clipboard.writeText(articleURL).then(() => {
+            alert('Link copied to clipboard!');
+        }).catch((error) => {
+            console.error('Could not copy text:', error);
+        });
+    };
+
+  return (
+    <div className="article4" id="article4">
+      {/**Understanding SEO: The Process, Analytics, and a Sample Strategy*/}
+      <style>
+        {`
                 .blog-post p {
                     font-size: 13px;
                 }
                 `}
-            </style>
-            
-            <article className="blog-post text-black">
-                <img src={Algo} alt="algorithm" className='w-100 w3-margin-bottom shadow-lg rounded' />
-                <h2 className="display-4 link-body-emphasis my-4"><b>Understanding Algorithms</b></h2>
-                <p className="blog-post-meta">July 27, 2024 by <a href="/">Carol</a></p>
+      </style>
+      <article>
+      <img src={Algo} alt="algorithm" className='w-100 shadow-lg rounded' />
+        <h1 className="display-4 link-body-emphasis my-4">
+          <b>{articleTitle}</b></h1>
+        <p className="blog-post-meta">
+         June 29, 2024 by
+          <a href="/blog">author</a>
+        </p>
+          <h3>Introduction to SEO</h3>
 
-                <p>Algorithms are at the heart of computer science. They are a set of instructions or rules designed to perform a specific task or solve a particular problem.</p>
-                <hr/>
-                <p>Algorithms can range from simple, such as sorting a list of numbers, to highly complex, such as those used in artificial intelligence and machine learning. Understanding algorithms is crucial for anyone interested in computer science, software development, and related fields.</p>
-             
-                <blockquote className="blockquote">
-                    <h4><i>"Algorithms + Data Structures = Programs."</i> <span style={{fontSize:'14px'}}>- Niklaus Wirth</span></h4>
-                </blockquote>
-                <p>Algorithms are not only used in computing but also in everyday tasks like cooking recipes, solving puzzles, and following a series of steps to complete a task efficiently.</p>
-                <h3>Common Algorithms</h3>
-                <p>There are several types of algorithms that are commonly used in computer science:</p>
-                <ul>
-                    <li>Sorting Algorithms: Bubble sort, Merge sort, Quick sort</li>
-                    <li>Search Algorithms: Linear search, Binary search</li>
-                    <li>Graph Algorithms: Dijkstra's algorithm, A* search algorithm</li>
-                </ul>
-                <p>Each type of algorithm serves a different purpose and is selected based on the problem at hand and the efficiency required.</p>
-                <h3>Algorithm Efficiency</h3>
-                <p>One of the key aspects of algorithms is their efficiency, which is often measured in terms of time complexity and space complexity:</p>
+          <h5>
+            <b>Search Engine Optimization</b>
+          </h5>
+          <p>
+            (SEO) is the process of enhancing a website to improve its
+            visibility for relevant searches on search engines. The better
+            visibility a website has in search results, the more likely it is to
+            attract attention and drive prospective and existing customers to
+            the business. SEO involves various techniques and strategies aimed
+            at increasing organic (non-paid) traffic to a website.
+          </p>
 
-                <dl className=''>
-                    <dt className='fw-bold text-decoration-underline' style={{fontSize:'20px'}}>Time Complexity</dt>
-                    <dd className='w3-margin-left'>Measures the amount of time an algorithm takes to complete as a function of the size of the input data.</dd>
-                    <dt className='fw-bold text-decoration-underline' style={{fontSize:'20px'}}>Space Complexity</dt> 
-                    <dd className='w3-margin-left'>Measures the amount of memory an algorithm uses as a function of the size of the input data.</dd>
-                </dl>
-                <h2>Practical Applications</h2>
-                <p>Algorithms are used in a wide range of applications, including:</p>
-                <ul>
-                    <li><strong>Data Analysis</strong>: Algorithms help in analyzing large datasets to find patterns and insights.</li>
-                    <li><strong>Machine Learning</strong>: Algorithms are used to train models that can make predictions or decisions based on data.</li>
-                    <li><strong>Optimization</strong>:  Algorithms help in finding the most efficient solutions to complex problems, such as route planning or resource allocation.</li>
-                </ul>
-                <p>Algorithms play a critical role in the development of software and systems that we rely on every day.</p>
-                <h2>Learning Algorithms</h2>
-                <p>To get started with learning algorithms, consider studying:</p>
-                <p>Introductory courses in computer science, such as those offered by online platforms like Coursera, edX, and Khan Academy, can provide a strong foundation in algorithms and data structures.</p>
-                <pre><code>Example code block</code></pre>
-                <p>Practicing coding problems on websites like LeetCode, HackerRank, and CodeSignal can help reinforce your understanding and improve your problem-solving skills.</p>
-            </article>
-            <article className="blog-post text-black">
-                <img src={Algo} alt="algorithm" className='w-100 w3-margin-bottom shadow-lg rounded' />
-                <h2 className="display-4 link-body-emphasis my-4"><b>Understanding Social Media Algorithms</b></h2>
-                <p>Social media algorithms determine what content users see on platforms like Facebook, Instagram, Twitter, and TikTok. These algorithms are designed to enhance user engagement by showing relevant and interesting content.</p>
-                <hr/>
-                <p>These algorithms are complex and constantly evolving, incorporating various factors to personalize each user's feed. Understanding how they work can help users and content creators optimize their social media strategies.</p>
-                <h2>Blockquotes</h2>
-                <p>Here's a notable quote about social media algorithms:</p>
-                <blockquote className="blockquote">
-                    <p>"Algorithms are opinions embedded in code." - Cathy O'Neil</p>
-                </blockquote>
-                <p>Social media algorithms are designed to prioritize content that is most likely to engage users, based on their past behavior and interactions.</p>
-                <h3>Key Factors in Social Media Algorithms</h3>
-                <p>Several key factors influence how social media algorithms rank and display content:</p>
-                <ul>
-                    <li><strong> Engagement: </strong> Likes, comments, shares, and other forms of interaction signal to the algorithm that content is valuable.</li>
-                    <li> <strong>Relevance:</strong> Content that aligns with a user's interests and past behavior is prioritized.</li>
-                    <li><strong>Timeliness:</strong> Newer posts are often given higher priority, though older content can resurface if it gains new engagement.</li>
-                </ul>
-                <p>Understanding these factors can help users and creators maximize their visibility and engagement on social media platforms.</p>                
-                <h3>Algorithm Transparency</h3>
-                <p>Many social media platforms offer some transparency into how their algorithms work. For example:</p>
-                <dl className=''>
-                    <dt className='fw-bold text-decoration-underline' style={{fontSize:'20px'}}>Facebook</dt>
-                    <dd className='w3-margin-left'>Facebook's algorithm prioritizes content from friends and family, as well as posts that receive high engagement.</dd>
-                    <dt className='fw-bold text-decoration-underline' style={{fontSize:'20px'}}>Instagram</dt>
-                    <dd className='w3-margin-left'>Instagram's algorithm favors recent posts, interactions, and accounts with which users frequently engage.</dd>
-                    <dt className='fw-bold text-decoration-underline' style={{fontSize:'20px'}}>Twitter</dt>
-                    <dd className='w3-margin-left'>Twitter's algorithm highlights tweets based on relevance, engagement, keywords, and the user's interactions.</dd>
-                </dl>
-                <h2>Practical Applications</h2>
-                <p>Here are some practical tips for leveraging social media algorithms:</p>
-                <ul>
-                    <li><strong>Engage with Your Audience</strong>: Respond to comments, messages, and engage with other users' content.</li>
-                    <li><strong>Post Consistently</strong>: Regular posting can help keep your content fresh and relevant in users' feeds.</li>
-                    <li><strong>Use Hashtags:</strong> Hashtags can help categorize your content and increase its discoverability.</li>
-                </ul>
-                <p>By understanding and leveraging social media algorithms, users and content creators can enhance their online presence and engagement.</p>
-                <h2>Learning More</h2>
-                <p>To dive deeper into social media algorithms, consider following resources and tips:</p>
-                <h3>Sub-heading</h3>
-                <p>Many social media platforms provide insights and tips on their blogs and help centers. Following industry experts and staying updated with platform changes can also provide valuable information.</p>
-                <pre><code>Example code block</code></pre>
-                <p>Experimenting with different types of content and analyzing engagement metrics can help you understand what works best for your audience.</p>
-            </article>
-      </div>
-    );
-}
+          <h5>
+            <b>The SEO Process</b>
+          </h5>
+          <ol>
+            <li>
+              <b>Keyword Research</b>
+              <br />
+              <span>
+                Keyword research is the foundation of any successful SEO
+                strategy. It involves identifying the terms and phrases that
+                potential customers use to find products or services like yours.
+                Tools like Google Keyword Planner, SEMrush, and Ahrefs can help
+                you discover high-value keywords with substantial search volume
+                and low competition.
+              </span>
+            </li>
+            <li>
+              <b>On-Page SEO</b>
+              <br />
+              <span>
+                On-page SEO refers to optimizing individual web pages to rank
+                higher and earn more relevant traffic. Key aspects of on-page
+                SEO include:
+              </span>
+              <ul>
+                <li>
+                  <b>Title Tags:</b> Ensure each page has a unique, keyword-rich
+                  title tag.
+                </li>
+                <li>
+                  <b>Meta Descriptions:</b> Write compelling meta descriptions
+                  that include primary keywords.
+                </li>
+                <li>
+                  <b>Headings (H1, H2, etc.):</b> Use headings to structure
+                  content and include relevant keywords.
+                </li>
+                <li>
+                  <b>Content Quality:</b> Create high-quality, informative, and
+                  engaging content that satisfies user intent.
+                </li>
+                <li>
+                  <b>URL Structure:</b> Use clean and descriptive URLs that
+                  include keywords.
+                </li>
+                <li>
+                  <b>Internal Linking:</b> Link to other relevant pages on your
+                  site to enhance navigation and distribute link equity.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>Technical SEO</b>
+              <br />
+              <span>
+                Technical SEO focuses on the backend of your website and how
+                pages are coded. Key components include:
+              </span>
+              <ul>
+                <li>
+                  <b>Site Speed:</b> Ensure your site loads quickly to improve
+                  user experience and ranking.
+                </li>
+                <li>
+                  <b>Mobile-Friendliness:</b> Optimize your site for mobile
+                  devices.
+                </li>
+                <li>
+                  <b>Crawlability:</b> Ensure search engines can crawl and index
+                  your site effectively by submitting a sitemap and using
+                  robots.txt.
+                </li>
+                <li>
+                  <b>HTTPS:</b> Secure your site with an SSL certificate to
+                  protect user data.
+                </li>
+              </ul>
+            </li>
 
+            <li>
+              <b>Off-Page SEO</b>
+              <br />
+              <span>
+                Off-page SEO involves activities outside your website that
+                influence your rankings. This primarily includes building
+                backlinks from reputable sites. Techniques include:
+              </span>
+              <ul>
+                <li>
+                  <b>Guest Blogging:</b> Write articles for other websites to
+                  earn backlinks.
+                </li>
+                <li>
+                  <b>Influencer Outreach:</b> Collaborate with influencers to
+                  get mentions and links.
+                </li>
+                <li>
+                  <b>Content Promotion:</b> Share your content on social media
+                  and other platforms to attract links.
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <b>Monitoring and Analytics</b>
+              <br />
+              <span>
+                To measure the success of your SEO efforts, you need to track
+                various metrics and analyze the data. Key tools include:
+              </span>
+              <ul>
+                <li>
+                  <b>Google Analytics:</b> Provides insights into traffic
+                  sources, user behavior, and conversions.
+                </li>
+                <li>
+                  <b>Google Search Console:</b> Monitors search performance,
+                  crawl errors, and site issues.
+                </li>
+                <li>
+                  <b>SEO Tools:</b> Tools like Ahrefs, SEMrush, and Moz provide
+                  keyword tracking, backlink analysis, and competitor insights.
+                </li>
+              </ul>
+            </li>
+          </ol>
+          <hr />
+          <div>
+            <div>
+              <h3>Sample SEO Strategy</h3>
+              <h5>Objective</h5>
+              <p>
+                Increase organic traffic to a tech blog by 30% within six
+                months.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <h5>
+                <b>Keyword Research</b>
+              </h5>
+              <p>
+                Identify primary keywords: "tech news," "latest gadgets," "AI
+                technology," "blockchain updates."
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <h5>
+                <b>On-Page SEO</b>
+              </h5>
+              <ul>
+                <li>
+                  Optimize existing content with primary and secondary keywords.
+                </li>
+                <li>Write new articles targeting identified keywords.</li>
+                <li>
+                  Update title tags, meta descriptions, and headings for all
+                  blog posts.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <h5>
+                <b>Technical SEO</b>
+              </h5>
+              <ul>
+                <li>
+                  Improve page load speed by optimizing images and leveraging
+                  browser caching.
+                </li>
+                <li>Ensure mobile responsiveness across all pages.</li>
+                <li>Submit an updated sitemap to Google Search Console.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <h5>
+                <b>Off-Page SEO</b>
+              </h5>
+              <ul>
+                <li>Write guest posts for reputable tech websites.</li>
+                <li>
+                  Engage with tech influencers on Twitter and LinkedIn to share
+                  content.
+                </li>
+                <li>Promote blog posts on social media and relevant forums.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <h5>
+                <b>Monitoring and Analytics</b>
+              </h5>
+              <ul>
+                <li>Set up Google Analytics and Google Search Console.</li>
+                <li>
+                  Track keyword rankings, organic traffic, and bounce rate.
+                </li>
+                <li>
+                  Analyze top-performing content and replicate successful
+                  strategies.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <h2>
+                <b>Conclusion</b>
+              </h2>
+              <p>
+                SEO is a multifaceted process that requires continuous effort
+                and adaptation. By understanding the different components of SEO
+                and utilizing analytics to monitor progress, businesses can
+                develop effective strategies to enhance their online visibility
+                and drive more organic traffic. Implementing a well-rounded SEO
+                strategy not only improves search engine rankings but also
+                enhances user experience and ultimately contributes to business
+                growth.
+              </p>
+            </div>
+          </div>
+        
+            <div className="share-buttons w3-padding-16">
+                    <button className="share-button btn btn-outline-black shadow px-2 btn-sm" onClick={handleShare}>share  <FaShare style={{fontSize:'1rem'}}/></button>
+                    <button className="copy-link-button btn btn-outline-black shadow px-2 btn-sm mx-1" onClick={handleCopyLink}> copy <MdOutlineAddLink  style={{fontSize:'1rem'}}/></button>
+              </div>
+              <hr/>
+      </article>
+    </div>
+  );
+};
 export default Article1;

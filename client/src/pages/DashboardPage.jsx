@@ -7,7 +7,6 @@ const DashboardPage = () => {
   return (
     <div>
   <div>
-<h1>Dashboard Page</h1>
 <DashboardComponent />
  </div>
     </div>

@@ -1,24 +1,13 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import './dashboard.css';
 import './dashboard.rtl.css';
-import Report1 from '../dashboard/Reports/Report1';   
-import Report2 from '../dashboard/Reports/Report2'; 
-
-const DashboardComponent = ({ currentReportIndex, setCurrentReportIndex }) => {
-    const reportRef = useRef(null);
-
-    const reports = [
-      { component: <div><Report1 /></div> },
-      { component: <div><Report2 /></div> },
-    ];
+import OffCanvas from './OffCanvas';
+import {
+  MDBBtn,
+} from 'mdb-react-ui-kit';
 
 
-      const handleRecentPostClick = (index) => {
-        setCurrentReportIndex(index);
-      };
-    
-
-
+const DashboardComponent = () => {
 
 
   return (
@@ -121,41 +110,52 @@ const DashboardComponent = ({ currentReportIndex, setCurrentReportIndex }) => {
       </symbol>
     </svg>
 
-    <div className="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+   {/**  <div className="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
       <button className="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
               id="bd-theme"
               type="button"
               aria-expanded="false"
               data-bs-toggle="dropdown"
               aria-label="Toggle theme (auto)">
-        <svg className="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+        <svg className="bi my-1 theme-icon-active" width="1em" height="1em">
+          <use href="#circle-half"></use></svg>
         <span className="visually-hidden" id="bd-theme-text">Toggle theme</span>
       </button>
       <ul className="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
         <li>
-          <button type="button" className="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-            <svg className="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+          <button type="button" className="dropdown-item d-flex align-items-center" 
+          data-bs-theme-value="light" aria-pressed="false">
+            <svg className="bi me-2 opacity-50" width="1em" 
+            height="1em"><use href="#sun-fill">
+              </use></svg>
             Light
-            <svg className="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+            <svg className="bi ms-auto d-none" width="1em" 
+            height="1em"><use href="#check2"></use></svg>
           </button>
         </li>
         <li>
-          <button type="button" className="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-            <svg className="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+          <button type="button" className="dropdown-item d-flex align-items-center" 
+          data-bs-theme-value="dark" aria-pressed="false">
+            <svg className="bi me-2 opacity-50" width="1em" height="1em">
+              <use href="#moon-stars-fill"></use></svg>
             Dark
-            <svg className="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+            <svg className="bi ms-auto d-none" width="1em" height="1em">
+              <use href="#check2"></use></svg>
           </button>
         </li>
         <li>
-          <button type="button" className="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-            <svg className="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
+          <button type="button" className="dropdown-item d-flex align-items-center active" 
+          data-bs-theme-value="auto" aria-pressed="true">
+            <svg className="bi me-2 opacity-50" width="1em" height="1em">
+              <use href="#circle-half"></use></svg>
             Auto
-            <svg className="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+            <svg className="bi ms-auto d-none" width="1em" height="1em">
+              <use href="#check2"></use></svg>
           </button>
         </li>
       </ul>
     </div>
-
+*/}
     
 <svg xmlns="http://www.w3.org/2000/svg" className="d-none">
   <symbol id="calendar3" viewBox="0 0 16 16">
@@ -206,100 +206,50 @@ const DashboardComponent = ({ currentReportIndex, setCurrentReportIndex }) => {
     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
   </symbol>
 </svg>
-
+{/**Start Header */}
 <header className="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-  <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="/">Company name</a>
-
+  <div className="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="/">Company name</div>
   <ul className="navbar-nav flex-row d-md-none">
     <li className="nav-item text-nowrap">
-      <button className="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
-        <svg className="bi"><use xlinkHref="#search"/></svg>
-      </button>
-    </li>
-    <li className="nav-item text-nowrap">
-      <button className="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <svg className="bi"><use xlinkHref="#list"/></svg>
-      </button>
+   <OffCanvas/>
     </li>
   </ul>
-
-  <div id="navbarSearch" className="navbar-search w-100 collapse">
-    <input className="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search"/>
-  </div>
 </header>
+{/**End Header */}
 
 <div className="container-fluid">
   <div className="row">
     <div className="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-      <div className="offcanvas-md offcanvas-end bg-body-tertiary" tabIndex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+      <div className="offcanvas-md offcanvas-end bg-body-tertiary" 
+      tabIndex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
         <div className="offcanvas-header">
-          <h5 className="offcanvas-title" id="sidebarMenuLabel">Company name</h5>
-          <button type="button" className="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
+          <button type="button" className="btn-close" data-bs-dismiss="offcanvas" 
+          data-bs-target="#sidebarMenu" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-          <ul className="nav flex-column"
-          >
-            <li className="nav-item"
-                onClick={() => handleRecentPostClick(0)}
-                style={{ cursor: 'pointer' }}
-            >
-              <a className="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="/">
-                <svg className="bi"><use xlinkHref="#house-fill"
-                /></svg>
-                Dashboard
-              </a>
-            </li>
-            <li className="nav-item"
-                onClick={() => handleRecentPostClick(1)}
-                style={{ cursor: 'pointer' }}>
-              <a className="nav-link d-flex align-items-center gap-2" href="/">
-                <svg className="bi"><use xlinkHref="#file-earmark"/></svg>
-                Orders
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="/">
-                <svg className="bi"><use xlinkHref="#cart"/></svg>
-                Products
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="/">
-                <svg className="bi"><use xlinkHref="#people"/></svg>
-                Customers
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="/">
-                <svg className="bi"><use xlinkHref="#graph-up"/></svg>
-                Reports
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="/">
-                <svg className="bi"><use xlinkHref="#puzzle"/></svg>
-                Integrations
-              </a>
-            </li>
-          </ul>
-
           <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-            <span>Saved reports</span>
+            <span>Analytics reports</span>
             <a className="link-secondary" href="/" aria-label="Add a new report">
-              <svg className="bi"><use xlinkHref="#plus-circle"/></svg>
+
             </a>
           </h6>
           <ul className="nav flex-column mb-auto">
-            <li className="nav-item">
+          <li className="nav-item">
               <a className="nav-link d-flex align-items-center gap-2" href="/">
                 <svg className="bi"><use xlinkHref="#file-earmark-text"/></svg>
-                Current month
+               Weekly
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link d-flex align-items-center gap-2" href="/">
                 <svg className="bi"><use xlinkHref="#file-earmark-text"/></svg>
-                Last quarter
+                Monthly
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link d-flex align-items-center gap-2" href="/">
+                <svg className="bi"><use xlinkHref="#file-earmark-text"/></svg>
+                Quarterly
               </a>
             </li>
             <li className="nav-item">
@@ -308,56 +258,25 @@ const DashboardComponent = ({ currentReportIndex, setCurrentReportIndex }) => {
                 Social engagement
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="/">
-                <svg className="bi"><use xlinkHref="#file-earmark-text"/></svg>
-                Year-end sale
-              </a>
-            </li>
-          </ul>
-
-          <hr className="my-3"/>
-
-          <ul className="nav flex-column mb-auto">
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="/">
-                <svg className="bi"><use xlinkHref="#gear-wide-connected"/></svg>
-                Settings
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link d-flex align-items-center gap-2" href="/">
-                <svg className="bi"><use xlinkHref="#door-closed"/></svg>
-                Sign out
-              </a>
-            </li>
           </ul>
         </div>
       </div>
     </div>
 
-    <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+{/**Start OffCanvas content*/}
+    <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 className="h2">Dashboard</h1>
-        <div className="btn-toolbar mb-2 mb-md-0">
-          <div className="btn-group me-2">
-            <button type="button" className="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" className="btn btn-sm btn-outline-secondary">Export</button>
-          </div>
-          <button type="button" className="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-            <svg className="bi"><use xlinkHref="#calendar3"/></svg>
-            This week
-          </button>
-        </div>
+        <MDBBtn
+        className='btn-outline-dark fa fa-lock bg-white text-dark'
+        style={{ paddingLeft: '10px', paddingRight: '10px' }}
+      ></MDBBtn>
+     
       </div>
-     {/* Render selected article */}
-     <div className='report-render'>
-                  <div className="w-100 w3-padding-top-32" ref={reportRef}>
-                    {reports[currentReportIndex].component}
-                  </div>
-                </div>
       <canvas className="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-
+ 
+ 
+ {/**
       <h2>Section title</h2>
       <div className="table-responsive small">
         <table className="table table-striped table-sm">
@@ -402,7 +321,27 @@ const DashboardComponent = ({ currentReportIndex, setCurrentReportIndex }) => {
           </tbody>
         </table>
       </div>
-    </div>
+      */}
+    </main>
+    {/**end OffCanvas content*/}
+    {/*}
+    <Dropdown
+             className="d-flex justify-center align-items-center g-1">
+          <DropdownButton id="dropdown-basic-button" 
+          variant='outline-secondary' 
+          title="Select Date " 
+          size='sm'
+          className="d-flex justify-center align-items-center g-1">
+        <Dropdown.Item href="#/action-1">Jan. 2024</Dropdown.Item>
+      <Dropdown.Item href="#/action-2">Feb. 2024</Dropdown.Item>
+      <Dropdown.Item href="#/action-3">Mar. 2024</Dropdown.Item>
+      <Dropdown.Item href="#/action-1">Apr. 2024</Dropdown.Item>
+      <Dropdown.Item href="#/action-2">May. 2024</Dropdown.Item>
+      <Dropdown.Item href="#/action-3">Jun. 2024</Dropdown.Item>
+      <Dropdown.Item href="#/action-1">Jul. 2024</Dropdown.Item>
+
+      </DropdownButton>
+      </Dropdown>*/}
   </div>
 </div>
  </div>
@@ -410,4 +349,10 @@ const DashboardComponent = ({ currentReportIndex, setCurrentReportIndex }) => {
   );
 };
 
+
+
+
 export default DashboardComponent;
+
+
+

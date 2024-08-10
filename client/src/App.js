@@ -9,7 +9,7 @@ import Article3 from "./components/Blog/Articles/Article3.jsx";
 import Article4 from "./components/Blog/Articles/Article4.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import BlogHeaderNav from "./components/Headers/BlogHeaderNav.jsx";
-//import DashboardPage from './pages/DashboardPage.jsx';
+import DashboardPage from './pages/DashboardPage.jsx'
 import BlogFooter from "./components/BlogFooter.jsx";
 import "./App.css";
 /* Test Pages */
@@ -25,6 +25,7 @@ function App() {
         <ErrorBoundary>
           <BlogHeaderNav />
           <Routes>
+            <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/" element={<HomePage setCurrentArticleIndex={setCurrentArticleIndex} />} />
         
             <Route 

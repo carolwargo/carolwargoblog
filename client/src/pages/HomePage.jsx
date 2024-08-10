@@ -1,7 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import CityBG from '../assets/images/CityBG.png';
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+//import { FaLongArrowAltRight } from "react-icons/fa";
+
 
 const HomePage = ({ setCurrentArticleIndex }) => {
   const navigate = useNavigate();
@@ -33,25 +36,23 @@ const HomePage = ({ setCurrentArticleIndex }) => {
 <div className='container-fluid' >    
 <div className="text-center">  
     <h1 className="display-4 fw-normal text-body-emphasis">
-    Topics and Opions
+    <b>THE POWER OF DATA:</b> <br /> <span className='w3-text-pink' style={{fontSize:'24px'}}><i>TRANSFORMING INSIGHTS INTO ACTION</i></span>
     </h1>
-          <h4>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi quos dolores iusto id doloribus iure? Molestiae quasi dolore, harum non quam, ea necessitatibus ad natus nulla quas ipsum dolorem laborum? Choosing the best cloud storage provider is difficult. This guide
-            shows the 10 top cloud storage services for cost, safety and
-            collaboration features, covering personal cloud storage and business
-            file storage solutions.
-          </h4>
+          <p>
+         Data is more than just numbers—it’s the key to unlocking your website’s full potential. By harnessing the power of data, you gain a deeper understanding of your audience, their behavior, and the performance of your online presence. 
+          </p>
+          {/* This invaluable resource empowers you to make informed decisions, optimize strategies, and drive impactful results. Discover how data-driven insights can be the catalyst for growth, innovation, and success in the ever-evolving digital world. */}
 </div>
 <div className='row justify-content-center align-items-center py-2'>
       <div className='col-sm-12 col-md-4 col-lg-4'>
         <div className='card' onClick={() => handleCardClick(0)}>
           <img src={CityBG} alt='blog' className='w-100'/>
           <div className='card-body'>
-            <div className='card-title'>NAVIGATE TO ARTICLE 1</div>
+            <div className='card-title'><h4><b>Getting Started with Data 
+            Analytics: 
+              The Foundation of Website Optimization</b></h4></div>
             <div className='card-text'>
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+            <p style={{fontSize:'14px'}}>Collecting data is the essential first step in enhancing your website. Data reveals critical facts like user behavior and coding issues, offering actionable insights that guide the optimization process and improve user experience.</p>
             </div>
           </div>
         </div>
@@ -60,11 +61,10 @@ const HomePage = ({ setCurrentArticleIndex }) => {
         <div className='card' onClick={() => handleCardClick(1)}>
           <img src={CityBG} alt='blog' className='w-100'/>
           <div className='card-body'>
-            <div className='card-title'>NAVIGATE TO ARTICLE 2</div>
+          <div className='card-title'><h4><b>Interpreting Data: How to 
+            Identify Opportunities for Improvement</b></h4></div>
             <div className='card-text'>
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+            <p style={{fontSize:'14px'}}>Learn how to effectively read and analyze data to pinpoint areas needing improvement on your website. This guide will help you recognize patterns, set actionable goals, and create a strategic plan to execute those improvements.</p>
             </div>
           </div>
         </div>
@@ -73,11 +73,54 @@ const HomePage = ({ setCurrentArticleIndex }) => {
         <div className='card' onClick={() => handleCardClick(2)}>
           <img src={CityBG} alt='blog' className='w-100'/>
           <div className='card-body'>
-            <div className='card-title'>NAVIGATE TO ARTICLE 3</div>
+          <div className='card-title'><h4><b> Five Key Focus Areas: The Foundation of Website 
+            Optimization</b></h4></div>
             <div className='card-text'>
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+            <p style={{fontSize:'14px'}}>Discover the five essential 
+              categories of data analytics that every website owner 
+              should understand. Learn what each category reveals about 
+              your site and how to leverage these insights to drive 
+              better performance and decision-making</p>
+            </div>
+          </div>
+        </div>
+    </div>  
+</div>
+<div className='row justify-content-center align-items-center py-2'>
+      <div className='col-sm-12 col-md-4 col-lg-4'>
+        <div className='card' onClick={() => handleCardClick(3)}>
+          <img src={CityBG} alt='blog' className='w-100'/>
+          <div className='card-body'>
+            <div className='card-title'><h4><b>Understanding Algorithms</b></h4></div>
+            <div className='card-text'>
+            <p style={{fontSize:'14px'}}> Algorithms are at the heart of computer science. They are a set of instructions or rules designed to perform a specific task or solve a particular problem.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='col-sm-12 col-md-4 col-lg-4'>
+        <div className='card' onClick={() => handleCardClick(4)}>
+          <img src={CityBG} alt='blog' className='w-100'/>
+          <div className='card-body'>
+          <div className='card-title'><h4><b>Interpreting Data: How to 
+            Identify Opportunities for Improvement</b></h4></div>
+            <div className='card-text'>
+            <p style={{fontSize:'14px'}}>Learn how to effectively read and analyze data to pinpoint areas needing improvement on your website. This guide will help you recognize patterns, set actionable goals, and create a strategic plan to execute those improvements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='col-sm-12 col-md-4 col-lg-4'>
+        <div className='card' onClick={() => handleCardClick(5)}>
+          <img src={CityBG} alt='blog' className='w-100'/>
+          <div className='card-body'>
+          <div className='card-title'><h4><b>Getting Started with Data Analytics: Five Key Focus Areas</b></h4></div>
+            <div className='card-text'>
+            <p style={{fontSize:'14px'}}>Discover the five essential 
+              categories of data analytics that every website owner 
+              should understand. Learn what each category reveals about 
+              your site and how to leverage these insights to drive 
+              better performance and decision-making</p>
             </div>
           </div>
         </div>
