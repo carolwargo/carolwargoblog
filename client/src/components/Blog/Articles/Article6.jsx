@@ -1,11 +1,11 @@
 import React from 'react';
 import Algo from '../../../assets/images/Posts/Algos.jpeg';
 
-const Article2 = () => {
+const Article6 = () => {
 
     return (
       
-      <div className='article2' id='article2'>
+      <div className='article6' id='article6'>
            {/**NEED TITLE AND POST */}
       <style>
                 {`
@@ -66,4 +66,4 @@ const Article2 = () => {
     );
 }
 
-export default Article2;
+export default Article6;
