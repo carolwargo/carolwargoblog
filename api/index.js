@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose'); // Mongoose import added
-const User = require('./models/User'); // User model import added
+const mongoose = require('mongoose');
+const User = require('./models/User'); // Ensure the path is correct
 const app = express();
 
 app.use(cors());
@@ -18,16 +18,19 @@ mongoose.connect(
 .catch(err => console.error('Could not connect to MongoDB...', err));
 
 app.post('/register', async (req, res) => {
-  const { username, password } = req.body;
-  const userDoc = await User.create({username, password});
-  res.json(userDoc);
+  try {
+    const { username, password } = req.body;
+    const userDoc = await User.create({ username, password });
+    res.json(userDoc);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to register user' });
+  }
 });
-
 
 app.listen(4000, () => {
   console.log('Server is running on port 4000');
 });
-
 
 
 /*MongoDB LOGIN INFO------->>>>>> 
