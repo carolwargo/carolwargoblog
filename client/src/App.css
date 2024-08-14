@@ -9,3 +9,7 @@
   .fade-in {
     animation: fadeIn 2s ease-in-out;
   }
+
+  .App {
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }

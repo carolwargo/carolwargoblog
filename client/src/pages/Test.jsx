@@ -1,30 +1,23 @@
-// HomePage.jsx
-import React from 'react';
-import SubscribeForm from '../components/Forms/SubscribeForm';
-//import MeWhite from '../assets/images/MeWhite.png';
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
+import Posts from "../components/Posts/Post";
+import "../styles/test.css";
 
 
-const HomePage = () => {
 
+const TestPage = () => {
   return (
-
-<div className="home" id="home">
-<SubscribeForm  />
+    <div className="test">
+      <main className="w3-container w3-content">
+        <div className="entries">
+          <Posts/>
 </div>
-)
-}
 
-export default HomePage;
+      </main>
+    </div>
+  );
+};
 
-
-
-
-
-
-
-
-
+export default TestPage;
 
 /*import React, { useState, useRef, useEffect } from 'react';
 import Article1 from '../components/Blog/Articles/Article1';

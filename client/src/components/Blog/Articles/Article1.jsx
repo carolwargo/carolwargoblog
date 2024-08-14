@@ -87,16 +87,13 @@ const Article1 = () => {
                 and low competition.
               </span>
             </li>
-            <li>
-              <b>On-Page SEO</b>
-              <br />
-              <span>
-                On-page SEO refers to optimizing individual web pages to rank
-                higher and earn more relevant traffic. Key aspects of on-page
-                SEO include:
-              </span>
+            <li className="my-2">
+              <b>ON-PAGE SEO</b> refers to optimizing individual web pages to rank
+                higher and earn more relevant traffic. <br /><b>Key aspects of on-page
+                SEO include:</b>
+
               <ul>
-                <li>
+                <li >
                   <b>Title Tags:</b> Ensure each page has a unique, keyword-rich
                   title tag.
                 </li>
@@ -122,13 +119,10 @@ const Article1 = () => {
                 </li>
               </ul>
             </li>
-            <li>
-              <b>Technical SEO</b>
-              <br />
-              <span>
-                Technical SEO focuses on the backend of your website and how
-                pages are coded. Key components include:
-              </span>
+            <li className="my-3">
+              <b className="w3-text-blue">TECHNICAL SEO</b> focuses on the backend of your website and how
+                pages are coded.    <br /> <b>Key components include:</b>
+            
               <ul>
                 <li>
                   <b>Site Speed:</b> Ensure your site loads quickly to improve
