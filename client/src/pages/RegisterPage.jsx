@@ -9,15 +9,18 @@ const [password, setPassword] = useState('');
 
 async function register(ev) {
   ev.preventDefault();
+  const response =
   await fetch('http://localhost:4000/register',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({username,password})
-  })
-  .then(res=>res.json())
-  .then(data=>{
-    console.log(data);
-  })
+  });
+
+  if (response.ok) {
+alert('Registered Successfully');
+  } else {
+    alert('Failed to Register');
+  }
 }
 
 return (

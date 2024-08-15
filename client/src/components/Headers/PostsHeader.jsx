@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/test.css';
 
 const PostsHeader = () => {
+  useEffect(() => {
+fetch('http://localhost:4000/profile', 
+  {
+  credentials: 'include',
+})
+  }, 
+  []);
     return (
         <div className='w3-container w3-content'>
         <header className="posts-header">
