@@ -10,6 +10,7 @@ import Article4 from "./components/Blog/Articles/Article4.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
+import CreatePost from "./pages/CreatePost.jsx";
 //import BlogHeaderNav from "./components/Headers/BlogHeaderNav.jsx";
 //import DashboardPage from './pages/DashboardPage.jsx'
 import BlogFooter from "./components/BlogFooter.jsx";
@@ -19,19 +20,23 @@ import "./App.css";
 /* Test Pages */
 import Test from "./pages/Test.jsx";
 import Test2 from "./pages/Test2.jsx";
+import { UserContextProvider } from "./UserContext.jsx";
 
 function App() {
   const [currentArticleIndex, setCurrentArticleIndex] = useState(0);
 
   return (
     <div className="App">
+    
       <BrowserRouter>
+      <UserContextProvider>
         <ErrorBoundary>
           <Routes>
             <Route element={<PostsLayout />}>
               <Route path="/test" element={<Test />} />
               <Route path="/login" element={<LoginPage/>} />
               <Route path="/register" element={<RegisterPage/>} />
+           <Route path="/create" element={<CreatePost />} />
             </Route>
             <Route element={<Layout />}>
               <Route path="/" element={<HomePage />} />
@@ -55,7 +60,9 @@ function App() {
           </Routes>
           <BlogFooter />
         </ErrorBoundary>
+        </UserContextProvider>
       </BrowserRouter>
+   
     </div>
   );
 }

@@ -13,6 +13,7 @@ const secret = '  8DyaILn1LnL4Ttql';
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(express.json());
 app.use(cookieParser());
+
 mongoose.connect('mongodb+srv://carolwargo:8DyaILn1LnL4Ttql@cluster0.llebq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 
 app.post('/register', async (req, res) => {
@@ -37,7 +38,10 @@ const passOk = bcrypt.compareSync(password, userDoc.password);
 if (!passOk) {
   jwt.sign({ username_id: userDoc._id }, secret, {}, (err, token) => {
      if (err) throw err;
-        res.cookie('token', token).json('ok');
+        res.cookie('token', token).json({
+          id: userDoc._id,
+          username,
+        });
         });
         } else {
             res.status(401).json({ error: 'Login Failed' });
@@ -46,12 +50,18 @@ if (!passOk) {
         );
   app.get('/profile', (req, res) => {
     const {token} = req.cookies;
-    jwt.verify(token, secret, (err, info) => {
-        if (err) {
-            res.status(401).json({ error: 'Unauthorized' });
-        } else {
-            res.json(info);
-        }
+    jwt.verify(token, secret, {}, (err, info) => {
+        if (err) throw err;
+        res.json(info);
+
         });
     });
+
+
+app.post('/logout', (req, res) => {
+    res.clearCookie('token', '').json('ok');
+});
+
 app.listen(4000)
+
+/**1:36 https://video.search.yahoo.com/search/video?fr=mcafee&p=blog+basics+mern+stack&type=E211US105G0#id=2&vid=e16d27fb755687c16e7efb8b0f3cca72&action=view */
