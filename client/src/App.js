@@ -27,17 +27,16 @@ function App() {
 
   return (
     <div className="App">
-    
       <BrowserRouter>
-      <UserContextProvider>
         <ErrorBoundary>
+        <UserContextProvider>
           <Routes>
-            <Route element={<PostsLayout />}>
-              <Route path="/test" element={<Test />} />
-              <Route path="/login" element={<LoginPage/>} />
-              <Route path="/register" element={<RegisterPage/>} />
-           <Route path="/create" element={<CreatePost />} />
-            </Route>
+              <Route element={<PostsLayout />}>
+                <Route path="/test" element={<Test />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/create" element={<CreatePost />} />
+              </Route>
             <Route element={<Layout />}>
               <Route path="/" element={<HomePage />} />
             </Route>
@@ -59,10 +58,9 @@ function App() {
             <Route path="/test2" element={<Test2 />} />
           </Routes>
           <BlogFooter />
+          </UserContextProvider>
         </ErrorBoundary>
-        </UserContextProvider>
       </BrowserRouter>
-   
     </div>
   );
 }

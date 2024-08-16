@@ -5,6 +5,8 @@ const User= require('./models/User');
 const bcrypt = require('bcrypt');
 const jwt= require('jsonwebtoken');
 const cookieParser= require('cookie-parser');
+const multer = require('multer');
+const uploadMiddleware = multer({ dest: 'uploads/' });  
 
 const app= express();
 
@@ -60,6 +62,11 @@ if (!passOk) {
 
 app.post('/logout', (req, res) => {
     res.clearCookie('token', '').json('ok');
+});
+
+app.post('/post',uploadMiddleware.single('file'), (req, res) => {
+res.json({file: req.file, body: req.body});
+
 });
 
 app.listen(4000)

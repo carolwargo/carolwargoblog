@@ -24,35 +24,29 @@ const formats = [
 export default function CreatePost() {
 const [title, setTitle] = useState('');     
 const [summary, setSummary] = useState('');
-const [file, setFile] = useState('');
 const [content, setContent] = useState('');
+const [files, setFiles] = useState('');
 
-function createNewPost(ev) {
+
+async function createNewPost(ev) {
     const data = new FormData();
     data.set('title', title);
     data.set('summary', summary);
     data.set('content', content);
-    console.log(file);
-    data.set('file', file);
+    console.log(files);
+    data.set('file', files[0]);
+ev.preventDefault();
 
-    fetch('http://localhost:4000/posts', {
+await fetch('http://localhost:4000/posts', {
         method: 'POST',
-        body: JSON.stringify({
-            title,
-            summary,
-            content,
-            file
-        }),
-            headers: {
-            'Content-Type': 'application/json'
+        body: data,  
+        credentials: 'include',
+        headers: {
+            'Accept': 'application/json',
         }
-    }).then(() => {
-        setTitle('');
-        setSummary('');
-        setContent('');
-        setFile('');
+
     });
-    ev.preventDefault();    
+console.log('Post created');
 }
 
     return (
@@ -65,21 +59,22 @@ function createNewPost(ev) {
                     type="text" 
                     placeholder={'Title'}
                     value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={(ev) => setTitle(ev.target.value)}
                     />
                     <input 
                     type="text" 
                     placeholder={'Summary'}
                     value={summary}
-                    onChange={(e) => setSummary(e.target.value)}
+                    onChange={(ev) => setSummary(ev.target.value)}
                     />
                       <input 
                     type="file" 
-                    value={file}
-                    onChange={(ev) => setFile(ev.target.file)}
+                    onChange={(ev) => setFiles(ev.target.files[0])} // Corrected file handling
+                 
                     />
            
                 <ReactQuill
+                
                 value={content} 
                 modules={modules}
                 formats={formats}
