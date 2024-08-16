@@ -64,10 +64,6 @@ app.post('/logout', (req, res) => {
     res.clearCookie('token', '').json('ok');
 });
 
-app.post('/post',uploadMiddleware.single('file'), (req, res) => {
-res.json({file: req.file, body: req.body});
-
-});
 
 app.post('/post',uploadMiddleware.single('file'), (req, res) => {
   res.json(req.files)
