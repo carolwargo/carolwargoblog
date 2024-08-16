@@ -33,6 +33,7 @@ function App() {
           <Routes>
               <Route element={<PostsLayout />}>
                 <Route path="/test" element={<Test />} />
+                <Route path="/test2" element={<Test2 />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/create" element={<CreatePost />} />
