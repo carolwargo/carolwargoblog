@@ -16,6 +16,8 @@ const secret = '  8DyaILn1LnL4Ttql';
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(express.json());
 app.use(cookieParser());
+app.use('/uploads', express.static('uploads'));
+//or app.use('/uploads', express.static(__dirname + '/uploads'));
 
 mongoose.connect('mongodb+srv://carolwargo:8DyaILn1LnL4Ttql@cluster0.llebq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 
@@ -74,22 +76,29 @@ async (req, res) => {
   const newPath = path+'.'+ext;
   fs.renameSync(path, path+'.'+ext);
 
-  const {title, summary, content} = req.body;
-const postDoc = await Post.create({
-title,
-summary,
-content,
-cover: newPath,
-})
+const {token}= req.cookies;
+jwt.verify(token, secret, {}, async (err, info) => {
+    if (err) throw err;
+    const {title, summary, content} = req.body;
+    const postDoc = await Post.create({
+        title,
+        summary,
+        content,
+        cover: newPath,
+        author:info.id,
+    });
 
   res.json({postDoc})
     });
-
-
-app.get('/post', async (req, res) => {
-  res.json(await Post.find());
 }
 );
+
+app.get('/post', async (req, res) => {
+  res.json(await Post.find()
+  .populate('author', ['username'])
+.sort({createdAt: -1})
+.limit(10));
+});
 
 app.listen(4000)
 
