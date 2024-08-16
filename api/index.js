@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const jwt= require('jsonwebtoken');
 const cookieParser= require('cookie-parser');
 const multer = require('multer');
-const uploadMiddleware = multer({ dest: 'uploads/' });  
+const uploadMiddleware = multer({ dest: '/api/uploads' });  
 
 const app= express();
 
@@ -68,6 +68,10 @@ app.post('/post',uploadMiddleware.single('file'), (req, res) => {
 res.json({file: req.file, body: req.body});
 
 });
+
+app.post('/post',uploadMiddleware.single('file'), (req, res) => {
+  res.json(req.files)
+    });
 
 app.listen(4000)
 
