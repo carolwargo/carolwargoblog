@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const jwt= require('jsonwebtoken');
 const cookieParser= require('cookie-parser');
 const multer = require('multer');
-const uploadMiddleware = multer({ dest: '/api/uploads' });  
+const uploadMiddleware = multer({ dest: './uploads'});  
 
 const app= express();
 
@@ -66,7 +66,7 @@ app.post('/logout', (req, res) => {
 
 
 app.post('/post',uploadMiddleware.single('file'), (req, res) => {
-  res.json(req.files)
+  res.json({files:req.file })
     });
 
 app.listen(4000)

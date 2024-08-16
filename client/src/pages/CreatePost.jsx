@@ -31,20 +31,45 @@ const [success, setSuccess] = useState('');*/
  const quillRef = useRef(null);
 
  async function createNewPost(ev) {
+    ev.preventDefault();
+
     const data = new FormData();
-        data.set('title', title);
-        data.set('summary', summary);
-        data.set('content', content);
-        data.set('file', files[0]);
-        ev.preventDefault();
-    {/*console.log(files) */}    
-const response = 
-await fetch('http://localhost:4000/post', 
-    {
-    method: 'POST',
-    body: data,
-   })
+    data.set('title', title);
+    data.set('summary', summary);
+    data.set('content', content);
+    data.set('file', files);
+
+    try {
+        const response = await fetch('http://localhost:4000/post', {
+            method: 'POST',
+            body: data,
+        });
+
+       console.log (await response.json());
+
+        // Check if the response is OK (status code 200-299)
+        if (response.ok) {
+            // Handle success
+            console.log('Post created successfully!');
+            // Optionally reset form fields
+            setTitle('');
+            setSummary('');
+            setContent('');
+            setFiles('');
+            // Or you might want to redirect the user or show a success message
+        } else {
+            // Handle errors from the server
+            const errorData = await response.json();
+            console.error('Error creating post:', errorData);
+            // Display error message to the user
+        }
+    } catch (error) {
+        // Handle network errors
+        console.error('Network error:', error);
+        // Display error message to the user
+    }
 }
+
 
     return (
         <div>
