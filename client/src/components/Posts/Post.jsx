@@ -8,7 +8,7 @@ export default function Post({
   cover, 
   content,
   createdAt, 
-  author,
+  username,
 }) {
     // Validate the createdAt value
     let formattedDate = "Invalid Date";
@@ -25,7 +25,7 @@ export default function Post({
                 <div className="row-entry g-4 row d-flex justify-content-center align-items-center mb-3">
                     <div className="col-sm-12 col-md-6 col-lg-6">
                         <div className="image">
-                          <Link to='/post/id'>
+                          <Link to='/post/_id'>
                             <img 
                             src={"http://localhost:4000/" + cover} 
                             alt="cover" className="w-100" />
@@ -35,7 +35,7 @@ export default function Post({
                     <div className="col-sm-12 col-md-6 col-lg-6">
                         <div className="texts">
                             <div className="container">
-                            <Link to='/post/id'>
+                            <Link to='/post/_id'>
                                 <h1 className="title">{title}</h1>
                                 </Link>
                                 <p
@@ -48,15 +48,7 @@ export default function Post({
                                     }}
                                 >{/**<a className='author'>{author} */}
                                     <span>
-                                        {author && author.username ? (
-                                            <a href="/" className="author" style={{ color: "#555", fontWeight: "bold" }}>
-                                                {author.username}
-                                            </a>
-                                        ) : (
-                                            <span style={{ color: "#555", fontWeight: "bold" }}>
-                                                Unknown Author
-                                            </span>
-                                        )}
+                                        {username} 
                                         <time className="text-reset" style={{marginLeft:'5px'}}>{formattedDate}</time>
                                     </span>
                                 </p>
