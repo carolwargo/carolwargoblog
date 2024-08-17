@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+
 
 /* Pages */
 import LoginPage from "./pages/LoginPage.jsx";
@@ -11,7 +13,7 @@ import Layout from './components/Layout.jsx';
 import IndexPage from "./pages/IndexPage.jsx";
 import EditPost from "./pages/EditPost.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
-import "./App.css";
+
 
 /* Test Pages */
 import { UserContextProvider } from "./components/UserContext.jsx";
@@ -19,8 +21,8 @@ import { UserContextProvider } from "./components/UserContext.jsx";
 function App() {
 
   return (
-    <div className="App">
-      <BrowserRouter>
+    <div className="App" >
+      <BrowserRouter basename="carolwargoblog">
         <ErrorBoundary>
         <UserContextProvider>
           <Routes>
@@ -32,11 +34,6 @@ function App() {
                 <Route path="/edit/:id" element={<EditPost />} />
                 <Route path="/post/:id" element={<PostPage />} />
               </Route>
-            {/**<Route element={<Layout />}>
-              <Route path="/" element={<HomePage />} />
-            </Route>
-            */}
-     
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
