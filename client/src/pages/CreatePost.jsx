@@ -64,23 +64,24 @@ if (response.ok) {
       <div className="w3-container w3-content">
         <h1>Create Post</h1>
         <form onSubmit={createNewPost}>
-          {/*
-                    {error && <div style={{ color: 'red' }}>{error}</div>}
-                    {success && <div style={{ color: 'green' }}>{success}</div>}
-                   */}
           <input
             type="title"
             placeholder={"Title"}
             value={title}
             onChange={(ev) => setTitle(ev.target.value)}
+            className="mb-1"
           />
           <input
             type="summary"
             placeholder={"Summary"}
             value={summary}
             onChange={(ev) => setSummary(ev.target.value)}
+              className="mb-1"
           />
-          <input type="file" onChange={(ev) => setFiles(ev.target.files[0])} />
+          <input type="file" 
+          onChange={(ev) => setFiles(ev.target.files[0])} 
+               className="mb-1"
+          />
           <ReactQuill
             ref={quillRef}
             value={content}
@@ -88,8 +89,10 @@ if (response.ok) {
             modules={modules}
             formats={formats}
             theme="snow"
+             className="mb-1"
           />
-          <button type="submit" className="w-100 mb-5 bg-primary">
+          <button type="submit" 
+          className="w-100 mb-5 bg-primary">
             Create post
           </button>
         </form>

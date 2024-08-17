@@ -20,6 +20,7 @@ export default function IndexPage() {
   return (
     <div className="all-posts w3-container w3-content">
       <h1>Index Page</h1>
+      <br />
       {posts.length > 0 && posts.map((post) => (
                 <Post key={post._id} {...post} /> 
             ))}

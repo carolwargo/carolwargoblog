@@ -17,7 +17,7 @@ app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static('uploads'));
-//or app.use('/uploads', express.static(__dirname + '/uploads'));
+
 
 mongoose.connect('mongodb+srv://carolwargo:8DyaILn1LnL4Ttql@cluster0.llebq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 
@@ -36,11 +36,15 @@ app.post('/register', async (req, res) => {
   
 
   app.post('/login', async (req, res) => {
-      const { username, password } = req.body;
-      const userDoc = await User.findOne({ username });
-const passOk = bcrypt.compareSync(password, userDoc.password);
-     
-if (!passOk) {
+    const { username, password } = req.body;
+    const userDoc = await User.findOne({ username });
+    if (!userDoc) {
+      return res.status(401).json({ error: 'Login Failed: User not found' });
+    }
+    
+    const passOk = bcrypt.compareSync(password, userDoc.password);
+    
+    if (passOk) {
   jwt.sign({ username_id: userDoc._id }, secret, {}, (err, token) => {
      if (err) throw err;
         res.cookie('token', token).json({
@@ -53,6 +57,7 @@ if (!passOk) {
             }
         }
         );
+
   app.get('/profile', (req, res) => {
     const {token} = req.cookies;
     jwt.verify(token, secret, {}, (err, info) => {
@@ -68,38 +73,37 @@ app.post('/logout', (req, res) => {
 });
 
 
-app.post('/post',uploadMiddleware.single('file'), 
-async (req, res) => {
-  const {originalname,path} = req.file;
-  const parts = originalname.split('.');
+app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
+  const { originalname, path } = req.file;
+  const parts = originalname.split(".");
   const ext = parts[parts.length - 1];
-  const newPath = path+'.'+ext;
-  fs.renameSync(path, path+'.'+ext);
+  const newPath = path + "." + ext;
+  fs.renameSync(path, newPath);
 
-const {token}= req.cookies;
-jwt.verify(token, secret, {}, async (err, info) => {
+  const { token } = req.cookies;
+  jwt.verify(token, secret, {}, async (err, info) => {
     if (err) throw err;
-    const {title, summary, content} = req.body;
+    const { title, summary, content } = req.body;
     const postDoc = await Post.create({
-        title,
-        summary,
-        content,
-        cover: newPath,
-        author:info.id,
+      title,
+      summary,
+      content,
+      cover: newPath,
+      author: info.id,
     });
-
-  res.json({postDoc})
-    });
-}
-);
-
-app.get('/post', async (req, res) => {
-  res.json(await Post.find()
-  .populate('author', ['username'])
-.sort({createdAt: -1})
-.limit(10));
+    res.json({ postDoc });
+  });
 });
 
-app.listen(4000)
+app.get("/post", async (req, res) => {
+  res.json(
+    await Post.find()
+      .populate("author", ["username"])
+      .sort({ createdAt: -1 })
+      .limit(20)
+  );
+});
+
+app.listen(4000);
 
 /**1:36 https://video.search.yahoo.com/search/video?fr=mcafee&p=blog+basics+mern+stack&type=E211US105G0#id=2&vid=e16d27fb755687c16e7efb8b0f3cca72&action=view */

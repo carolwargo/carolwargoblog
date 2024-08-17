@@ -15,8 +15,8 @@ import PostsLayout from "./components/Layouts/PostsLayout.jsx";
 import IndexPage from "./pages/IndexPage.jsx";
 import "./App.css";
 /* Test Pages */
-import Test from "./pages/Test.jsx";
-import Test2 from "./pages/Test2.jsx";
+//import Test from "./pages/Test.jsx";
+//import Test2 from "./pages/Test2.jsx";
 import { UserContextProvider } from "./UserContext.jsx";
 
 function App() {
@@ -29,8 +29,6 @@ function App() {
           <Routes>
               <Route element={<PostsLayout />}>
                 <Route path="/" element={<IndexPage />} />
-                <Route path="/test" element={<Test />} />
-                <Route path="/test2" element={<Test2 />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/create" element={<CreatePost />} />

@@ -29,7 +29,7 @@ export default function LoginPage () {
 
   // Check for redirect after successful login
   if (redirect) {
-    return <Navigate to={'/test'} />;
+    return <Navigate to={'/'} />;
   }
 
   return (
