@@ -3,45 +3,36 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const RegisterPage = () => {
 
-const [username, setUsername] = useState('');
-const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  async function register(ev) {
+    ev.preventDefault();
+    const response = await fetch('http://localhost:4000/register', {
+      method: 'POST',
+      body: JSON.stringify({username,password}),
+      headers: {'Content-Type':'application/json'},
+    });
 
-async function register(ev) {
-  ev.preventDefault();
-  const response =
-  await fetch('http://localhost:4000/register',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({username,password})
-  });
-
-  if (response.ok) {
-alert('Registered Successfully');
-  } else {
-    alert('Failed to Register');
+    if (response.status === 200) {
+      alert('registration successful');
+    } else {
+      alert('registration failed');
+    }
   }
-}
 
 return (
-<div className='container justify-content-center' style={{maxWidth:'600px'}}>
-  <form className='register pb-5' 
-  onSubmit={register}>
-      <h1 className='text-center m-3'>Register</h1>
-      <input 
-      type="text"
-      placeholder='username' 
-      value={username}
-      onChange={(e)=>setUsername(e.target.value)}
-      />
-      <input 
-      type="text"
-      placeholder='password' 
-      value={password}
-      onChange={(e)=>setPassword(e.target.value)}
-      />
+<form className="register" onSubmit={register}>
+      <h1>Register</h1>
+      <input type="text"
+             placeholder="username"
+             value={username}
+             onChange={ev => setUsername(ev.target.value)}/>
+      <input type="password"
+             placeholder="password"
+             value={password}
+             onChange={ev => setPassword(ev.target.value)}/>
       <button>Register</button>
-        </form>
-        </div>
+    </form>
 );
 }
 

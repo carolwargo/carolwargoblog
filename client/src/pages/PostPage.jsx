@@ -1,65 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import { formatISO9075 } from "date-fns";
+import { UserContext } from "../components/UserContext";
 
-export default function Post({ 
-  title, 
-  summary, 
-  cover, 
-  content,
-  createdAt, 
-  username,
-}) {
-    // Validate the createdAt value
-    let formattedDate = "Invalid Date";
+export default function PostPage() {
+  const [postInfo, setPostInfo] = useState(null);
+  const { userInfo } = useContext(UserContext);
+  const { id } = useParams();
 
-    try {
-        formattedDate = createdAt ? formatISO9075(new Date(createdAt)) : "No Date Provided";
-    } catch (error) {
-        console.error("Error formatting date:", error);
-    }
+  useEffect(() => {
+    fetch(`http://localhost:4000/post/${id}`)
+      .then(response => response.json())
+      .then(postInfo => {
+        setPostInfo(postInfo);
+      });
+  }, [id]);
 
-    return (
-        <div className="post">
-            <div className="pb-3">
-                <div className="row-entry g-4 row d-flex justify-content-center align-items-center mb-3">
-                    <div className="col-sm-12 col-md-6 col-lg-6">
-                        <div className="image">
-                          <Link to='/post/_id'>
-                            <img 
-                            src={"http://localhost:4000/" + cover} 
-                            alt="cover" className="w-100" />
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="col-sm-12 col-md-6 col-lg-6">
-                        <div className="texts">
-                            <div className="container">
-                            <Link to='/post/_id'>
-                                <h1 className="title">{title}</h1>
-                                </Link>
-                                <p
-                                    className="info"
-                                    style={{
-                                        fontSize: "11px",
-                                        color: "#777",
-                                        marginTop: "0",
-                                        marginBottom: "0px",
-                                    }}
-                                >{/**<a className='author'>{author} */}
-                                    <span>
-                                        {username} 
-                                        <time className="text-reset" style={{marginLeft:'5px'}}>{formattedDate}</time>
-                                    </span>
-                                </p>
-                                <p className="summary" style={{ fontSize: "15px", marginTop: "5px" }}>
-                                    {summary}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  if (!postInfo) return '';
+
+  return (
+    <div className="post-page">
+      <h1>{postInfo.title}</h1>
+      <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
+      <div className="author">by @{postInfo.author.username}</div>
+      {userInfo && userInfo.id === postInfo.author._id && (
+        <div className="edit-row">
+          <Link className="edit-btn" to={`/edit/${postInfo._id}`}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+            </svg>
+            Edit this post
+          </Link>
         </div>
-    );
+      )}
+      <div className="image">
+        <img src={`http://localhost:4000/${postInfo.cover}`} alt="Post cover" />
+      </div>
+      <div className="content" dangerouslySetInnerHTML={{ __html: postInfo.content }} />
+    </div>
+  );
 }
