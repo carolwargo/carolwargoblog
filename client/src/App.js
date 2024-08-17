@@ -8,12 +8,11 @@ import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import CreatePost from "./pages/CreatePost.jsx";
 import PostPage from "./pages/PostPage.jsx";
-import Footer from "./components/Footer.jsx";
-import Layout from './components/Layout.jsx';
 import IndexPage from "./pages/IndexPage.jsx";
 import EditPost from "./pages/EditPost.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
-
+import Footer from "./components/Footer.jsx";
+import Layout from './components/Layout.jsx';
 
 /* Test Pages */
 import { UserContextProvider } from "./components/UserContext.jsx";
@@ -21,7 +20,7 @@ import { UserContextProvider } from "./components/UserContext.jsx";
 function App() {
 
   return (
-    <div className="App" >
+    <div className="App">
       <BrowserRouter basename="carolwargoblog">
         <ErrorBoundary>
         <UserContextProvider>

@@ -14,7 +14,7 @@ export default function PostPage() {
       .then(postInfo => {
         setPostInfo(postInfo);
       });
-  }, [id]);
+  },);
 
   if (!postInfo) return '';
 
