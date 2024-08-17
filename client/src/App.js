@@ -10,7 +10,7 @@ import CreatePost from "./pages/CreatePost.jsx";
 import PostPage from "./pages/PostPage.jsx";
 //import BlogHeaderNav from "./components/Headers/BlogHeaderNav.jsx";
 //import DashboardPage from './pages/DashboardPage.jsx'
-import BlogFooter from "./components/BlogFooter.jsx";
+import Footer from "./components/Footer.jsx";
 import PostsLayout from "./components/Layouts/PostsLayout.jsx";
 //import Layout from "./components/Layouts/Layout.jsx";
 import IndexPage from "./pages/IndexPage.jsx";
@@ -44,7 +44,7 @@ function App() {
      
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <BlogFooter />
+          <Footer />
           </UserContextProvider>
         </ErrorBoundary>
       </BrowserRouter>
