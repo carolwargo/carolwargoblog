@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
-import { UserContext } from '../UserContext';
-import '../styles/test.css';
+import { UserContext } from '../components/UserContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 

@@ -1,6 +1,5 @@
 import React from "react";
 import Posts from "../components/Posts/Post";
-import "../styles/test.css";
 
 
 

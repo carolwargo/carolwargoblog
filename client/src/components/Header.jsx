@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../../styles/test.css";
-import { UserContext } from "../../UserContext";
+import { UserContext } from "./UserContext";
 
 export default function PostsHeader() {
   const { setUserInfo, userInfo } = useContext(UserContext);

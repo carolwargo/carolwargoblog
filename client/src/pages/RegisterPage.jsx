@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import '../styles/test.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const RegisterPage = () => {
