@@ -17,6 +17,13 @@ const uploadMiddleware = multer({ dest: './uploads' });
 // Define constants using environment variables
 const salt = bcrypt.genSaltSync(10);
 const secret = process.env.JWT_SECRET;  // Use secret from .env file
+console.log('JWT_SECRET:', process.env.JWT_SECRET);
+console.log('MONGODB_URI:', process.env.MONGODB_URI);
+
+if (!process.env.JWT_SECRET) {
+  console.error('JWT_SECRET is not defined in .env file');
+}
+
 
 // Middleware setup
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
@@ -34,9 +41,6 @@ mongoose.connect(process.env.MONGODB_URI, {
     console.error('Error connecting to MongoDB:', err);
     process.exit(1);  // Exit the application if the database connection fails
   });
-
-
-
 
 
 // Error handling middleware for more detailed error messages
