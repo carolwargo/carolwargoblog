@@ -1,22 +1,33 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const User = require('./models/User'); // Adjust path as necessary
-const Post = require('./models/Post'); // Adjust path as necessary
+const User = require('../models/User');
+const Post = require('../models/Post');
 
 const users = [
   { username: 'admin', password: 'admin123' },
-  { username: 'john_doe', password: 'password3' },
-  { username: 'jane_doe', password: 'password4' },
-  { username: 'jane_doe', password: 'password5' },
-    { username: 'josh_doe', password: 'password6' },
-    { username: 'jake_doe', password: 'password7' },
+  { username: 'john', password: 'pass3' },
+  { username: 'jane', password: 'pass4' },
+  { username: 'josh', password: 'pass6' },
+  { username: 'jake', password: 'pass7' },
 ];
 
 const posts = [
-  { title: 'Sample Post', summary: 'This is a sample post.', content: 'Content of the sample post.' },
-  { title: '2nd Post', summary: 'This is the summary of the second post.', content: 'Here is some content for the second post.', cover: 'cover2.jpg', author: 'jane_doe' },
-  { title: '3rd Post', summary: 'This is the summary of the third post.', content: 'Here is some content for the third post.', cover: 'cover3.jpg', author: 'john_doe' },
-  { title: '4th Post', summary: 'ADMIN POST- Summary of the 4th post', content: 'Content of the 4th post', cover: 'path/to/cover/image', author: 'admin' }
+  { title: 'Sample Post', 
+    summary: 'This is a sample post.', 
+    content: 'Content of the sample post.', 
+    cover: 'cover.jpg' },
+  { title: '1. First Post', 
+    summary: 'This is a sample post.', 
+    content: 'Content of the sample post.', 
+    cover: 'https://wallpaperset.com/w/full/c/9/0/522708.jpg' },
+  { title: '2. Second Post', 
+    summary: 'This is a sample post.', 
+    content: 'Content of the sample post.', 
+    cover: 'https://wallpaperset.com/w/full/c/9/0/522708.jpg' },
+  { title: '3. Third Post', 
+    summary: 'This is a sample post.', 
+    content: 'Content of the sample post.', 
+    cover: 'https://wallpaperset.com/w/full/c/9/0/522708.jpg' },
 ];
 
 async function seed() {
@@ -28,12 +39,29 @@ async function seed() {
 
     console.log('Connected to MongoDB');
 
+    // Clear existing collections
     await User.deleteMany({});
     await Post.deleteMany({});
 
-    await User.insertMany(users);
-    await Post.insertMany(posts);
+    // Insert users and get user IDs
+    const insertedUsers = await User.insertMany(users);
+    const userMap = insertedUsers.reduce((map, user) => {
+      map[user.username] = user._id;
+      return map;
+    }, {});
 
+    console.log('Users inserted:', insertedUsers);
+
+    // Add author field to posts
+    const postsWithAuthors = posts.map(post => ({
+      ...post,
+      author: userMap['admin'] // Replace with actual username if needed
+    }));
+
+    // Insert posts
+    await Post.insertMany(postsWithAuthors);
+
+    console.log('Posts inserted:', postsWithAuthors);
     console.log('Database seeded successfully');
   } catch (err) {
     console.error('Error seeding database:', err);
