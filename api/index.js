@@ -49,11 +49,8 @@ mongoose.connect(process.env.MONGODB_URI, {
     res.send('This is the Carol Wargo Blog route');
   });
   
-// Error handling middleware for more detailed error messages
-app.use((err, req, res, next) => {
-  console.error(err.stack);  // Log error stack trace for debugging
-  res.status(500).json({ error: 'Internal Server Error' });
-});
+
+
 
 // Register route with detailed error handling
 app.post('/register', async (req, res, next) => {
@@ -221,6 +218,11 @@ app.get('/post/:id', async (req, res, next) => {
 // Catch-all error handling for undefined routes
 app.use((req, res, next) => {
   res.status(404).json({ error: 'Not Found' });
+});
+// Error handling middleware for more detailed error messages
+app.use((err, req, res, next) => {
+  console.error(err.stack);  // Log error stack trace for debugging
+  res.status(500).json({ error: 'Internal Server Error' });
 });
 
 // Conditionally run seed script if SEED_DB environment variable is set
