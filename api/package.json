@@ -4,9 +4,9 @@
   "description": "Server-side code for the application",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "seed": "node seeds.js"
+  "start": "node index.js",
+  "dev": "nodemon index.js",
+  "seed": "node utils/seeds.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
