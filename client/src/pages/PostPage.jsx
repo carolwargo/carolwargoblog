@@ -5,25 +5,40 @@ import { UserContext } from "../components/UserContext";
 
 export default function PostPage() {
   const [postInfo, setPostInfo] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { userInfo } = useContext(UserContext);
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:4000/post/${id}`)
-      .then(response => response.json())
-      .then(postInfo => {
-        setPostInfo(postInfo);
-      });
-  },);
+    const fetchPost = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/post/${id}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setPostInfo(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (!postInfo) return '';
+    fetchPost();
+  }, [id]); // Adding id to dependency array
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!postInfo) return <p>No post data available</p>;
 
   return (
     <div className="post-page">
       <h1>{postInfo.title}</h1>
       <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
-      <div className="author">by @{postInfo.author.username}</div>
-      {userInfo && userInfo.id === postInfo.author._id && (
+      <div className="author">by @{postInfo.author?.username}</div>
+      {userInfo && userInfo.id === postInfo.author?._id && (
         <div className="edit-row">
           <Link className="edit-btn" to={`/edit/${postInfo._id}`}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
