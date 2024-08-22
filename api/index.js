@@ -11,6 +11,9 @@ const multer = require('multer');
 const fs = require('fs');
 const app = express();
 
+// Set strictQuery option
+mongoose.set('strictQuery', false); // or true depending on your preference
+
 // Set up multer for file uploads
 const uploadMiddleware = multer({ dest: './uploads' });
 
@@ -42,7 +45,10 @@ mongoose.connect(process.env.MONGODB_URI, {
     process.exit(1);  // Exit the application if the database connection fails
   });
 
-
+  app.get('/api/carolwargoblog', (req, res) => {
+    res.send('This is the Carol Wargo Blog route');
+  });
+  
 // Error handling middleware for more detailed error messages
 app.use((err, req, res, next) => {
   console.error(err.stack);  // Log error stack trace for debugging

@@ -19,15 +19,15 @@ const posts = [
   { title: '1. First Post', 
     summary: 'This is a sample post.', 
     content: 'Content of the sample post.', 
-    cover: 'https://wallpaperset.com/w/full/c/9/0/522708.jpg' },
+    cover: '/client/src/assets/images/CityBG.png' },
   { title: '2. Second Post', 
     summary: 'This is a sample post.', 
     content: 'Content of the sample post.', 
-    cover: 'https://wallpaperset.com/w/full/c/9/0/522708.jpg' },
+    cover: '/client/src/assets/images/CityBG.png' },
   { title: '3. Third Post', 
     summary: 'This is a sample post.', 
     content: 'Content of the sample post.', 
-    cover: 'https://wallpaperset.com/w/full/c/9/0/522708.jpg' },
+    cover: '/client/src/assets/images/CityBG.png' },
 ];
 
 async function seed() {
