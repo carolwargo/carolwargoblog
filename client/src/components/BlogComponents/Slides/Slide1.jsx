@@ -28,16 +28,17 @@ export default function InstagramPost() {
 
 
   return (
-    <div className='email-samples bg-primary-subtle w3-padding-48' id="email-samples">
-     <div className="w3-padding-large text-center ">
-    <h1 className='fw-bold text-primary'>
+    <div className='email-samples container' id="email-samples">
+     <div className="text-center w3-margin-top">
+    <h1 className='fw-bold text-primary px-2'>
       <i className='fw-bold'>EMAIL CAMPAIGN SAMPLES</i></h1> 
       <h4> Unified Graphics-Maximize your brand’s visibility with multi-platform marketing graphics, ensuring consistent and captivating visuals across all your marketing channels.</h4>
       </div>
-        <div className="container w3-padding-32">
+        <div className="w3-padding-32">
         <div className="row d-flex justify-content-center align-items-center">
-    
-           <div className="col-sm-6 col-md-3 col-lg-3 w3-padding-small ">
+        <div className="col-sm-1 col-md-1 col-lg-1 ">
+           </div>
+           <div className="col-sm-10 col-md-10 col-lg-10 ">
             <Card
             className="shadow my-1"
       variant="outlined"
@@ -73,10 +74,8 @@ export default function InstagramPost() {
       </CardContent>
     </Card>
             </div>
-
- 
-
-
+            <div className="col-sm-1 col-md-1 col-lg-1 ">
+            </div>
                 </div>
                 </div>
     </div>

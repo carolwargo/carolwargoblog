@@ -5,7 +5,6 @@ import Article2 from '../components/BlogComponents/Articles/Article2';
 import Article3 from '../components/BlogComponents/Articles/Article3';
 import Article4 from '../components/BlogComponents/Articles/Article4';
 import Article5 from '../components/BlogComponents/Articles/Article5';
-import MeWhite from '../assets/images/MeWhite.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const BlogPage = ({ currentArticleIndex, setCurrentArticleIndex }) => {
@@ -44,10 +43,9 @@ const BlogPage = ({ currentArticleIndex, setCurrentArticleIndex }) => {
 
   return (
     
-    <div className='w3-padding-32'>
-      <main className="container">
-        <div className="row g-3 justify-content-between w3-margin-top">
-          <div className="col-md-8">
+    <div className='w3-padding'>
+        <div className="row g-2 justify-content-center w3-margin-top">
+          <div className="col-md-9 justify-content-center">
             {/* Pagination */}
           {/* Render selected article */}
                 <div className='article-render'>
@@ -57,7 +55,7 @@ const BlogPage = ({ currentArticleIndex, setCurrentArticleIndex }) => {
                 </div>
   
                 {/* Pagination controls */}
-                <div className="d-flex w3-padding-48 justify-content-between">
+                <div className="d-flex w3-padding-48">
                   <button
                     className="btn btn-dark mx-1"
                     style={{ paddingRight: '1.1rem', paddingLeft: '1.1rem' }}
@@ -78,26 +76,21 @@ const BlogPage = ({ currentArticleIndex, setCurrentArticleIndex }) => {
               </div>
           
           {/** Article rendering container */}
-          <div className="col-md-4" >
+          <div className="col-md-3 justify-content-center" >
          
-  <div className="position-sticky justify-content-center align-items-center">
-<div className="w3-padding-large">
+  <div className="position-sticky">
+<div>
 
-
-      <img src={MeWhite} alt="me" className='w-100 shadow rounded-5 border-b-2'/>
-      <div className="w-100 mt-2 w3-padding-small">
-                <h4>Carol Wargo</h4>
+   {/*Recent Posts container */}
+    <div className="card w3-black">
+<div className='w3-padding-large w3-padding-top-16 justify-content-center align-items-center'>
+<div className="about mb-5">
+<h3 className="mb-3 mt-3">ABOUT</h3>
                 <p className="mb-0" style={{fontSize:'14px'}}>
                   Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.
                 </p>
-                </div>
-             
-          
-   {/*Recent Posts container */}
-    <div className="card w3-black recent-posts-container">
- 
-<div className='w3-padding-large w3-padding-top-16 justify-content-center align-items-center'>
-<h3 className="mb-3 mt-3">RECENT POSTS</h3>
+</div>
+<h3 className="mb-2 mt-5">RECENT POSTS</h3>
       <ul className="list-unstyled">
         <li>
           <div
@@ -167,7 +160,7 @@ const BlogPage = ({ currentArticleIndex, setCurrentArticleIndex }) => {
   </div>
 </div>
 </div>
-      </main>
+    
     </div>
   );
 };
