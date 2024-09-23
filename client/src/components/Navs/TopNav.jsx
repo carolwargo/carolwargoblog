@@ -6,7 +6,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FaQuestionCircle } from "react-icons/fa";
 import { AiTwotoneMail } from "react-icons/ai";
 import { TbScreenShare } from "react-icons/tb";
-import SubscribeModal from '../Modal/SubscribeModal';
+
 
 const TopNavbar = () => {
   const [expanded, setExpanded] = useState(false);
@@ -30,38 +30,41 @@ const TopNavbar = () => {
   };
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary shadow-sm fixed-top" expanded={expanded}>
+ <div className='container-fluid'>
+    <Navbar expand="lg" variant='dark' className="w3-black shadow-sm fixed-top" expanded={expanded}>
       <Container fluid>
         <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={handleToggle} className='w3-margin-right'>
-          <FontAwesomeIcon icon={faBars} style={{ color: "black" }} />
+          <FontAwesomeIcon icon={faBars} style={{ color: "white" }} />
         </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link to="/" className="nav-link w3-text-pink fw-bold" 
-            onClick={handleNavLinkClick}>Con
-           <b style={{fontFamily:"Dancing Script"}}>Scribe</b></Link>
+            <Link to="/" className="nav-link w3-text-white fw-bold" 
+            style={{ color:'red'}}
+            onClick={handleNavLinkClick}>Slide
+           <b style={{ color:'red'}}>Show</b></Link>
 
-          <Link to="/about" className="nav-link" style={{ color: "black" }}  onClick={handleNavLinkClick}>About</Link>
-           <Link to="/resources" className="nav-link" style={{ color: "black" }}  onClick={handleNavLinkClick}>Resources</Link>
-           <Link to="/services" className="nav-link" style={{ color: "black" }}  onClick={handleNavLinkClick}>Pricing</Link>
-           <Link to="/web" className="nav-link" style={{ color: "black" }}  onClick={handleNavLinkClick}>Web Page</Link>
+          <Link to="/about" className="nav-link" style={{ color: "white" }}  onClick={handleNavLinkClick}>About</Link>
+           <Link to="/resources" className="nav-link" style={{ color: "white" }}  onClick={handleNavLinkClick}>Resources</Link>
+           <Link to="/services" className="nav-link" style={{ color: "white" }}  onClick={handleNavLinkClick}>Pricing</Link>
+           <Link to="/web" className="nav-link" style={{ color: "white" }}  onClick={handleNavLinkClick}>Web Page</Link>
             
             <NavDropdown
               title="Services/LandingPages"
+
               id="basic-nav-dropdown"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               show={isHovered}
             >
-              <div style={{ borderRadius: '5px' }} className="shadow">
+              <div style={{ borderRadius: '5px' }}>
                   <NavDropdown.Item 
-                as={Link} to="/website" className="text-black">Websites
+                as={Link} to="/website">Websites
                 </NavDropdown.Item>
                 <NavDropdown.Item 
-                as={Link} to="/graphics" className="text-black">Graphics
+                as={Link} to="/graphics">Graphics
                 </NavDropdown.Item>
                 <NavDropdown.Item 
-                as={Link} to="/social" className="text-black">Content Management
+                as={Link} to="/social">Content Management
                 </NavDropdown.Item>
         </div>
             </NavDropdown>
@@ -71,15 +74,15 @@ const TopNavbar = () => {
             
           </Nav>
           <Nav className='ml-auto'>
-          <Link to="/demo" className="nav-link" onClick={handleNavLinkClick} style={{fontSize:'14px'}}>DEMO SITE<TbScreenShare className='mx-2' 
+          <Link to="/demo" className="nav-link text-white" onClick={handleNavLinkClick} style={{fontSize:'14px'}}>SLIDE DEMO<TbScreenShare className='mx-2' 
           style={{fontSize:'16px'}}/></Link>
-  <SubscribeModal />
-            <Link to="/contact" className="nav-link" onClick={handleNavLinkClick}><AiTwotoneMail /></Link>
-            <Link to="/help" className="nav-link" onClick={handleNavLinkClick}><FaQuestionCircle/></Link>
+            <Link to="/contact" className="nav-link text-white" onClick={handleNavLinkClick}><AiTwotoneMail /></Link>
+            <Link to="/help" className="nav-link text-white" onClick={handleNavLinkClick}><FaQuestionCircle/></Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    </div>
   );
 };
 

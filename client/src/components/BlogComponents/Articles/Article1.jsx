@@ -69,7 +69,7 @@ const Article1 = () => {
                 }
                 `}
             </style>
-      <article>
+      <article className="container">
       <img src={Algo} alt="algorithm" className='w-100 shadow-lg rounded' />
         <h1 className="display-4 link-body-emphasis my-4">
           <b>{articleTitle}</b></h1>

@@ -19,7 +19,7 @@ import BlogPage from "./pages/BlogPage.jsx";
 import DemoPage from "./pages/DemoPage.jsx";
 import TopNav from "./components/Navs/TopNav.jsx";
 import Footer from "./components/Footer.jsx";
-import BlogHeader from "./components/BlogComponents/Headers/BlogHeader.jsx";
+import DMHeader from "./components/BlogComponents/Headers/DMHeader.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
       <BrowserRouter basename="carolwargoblog">
         <ErrorBoundary>
           <TopNav />
-          <BlogHeader />
+          <DMHeader />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/demo" element={<DemoPage />} />
