@@ -1,5 +1,5 @@
 import React from 'react';
-import Algo from "../../../../assets/images/Algos.jpeg";
+import Algo from "../../../assets/images/Algos.jpeg";
 import { FaShare } from "react-icons/fa6";
 import { MdOutlineAddLink } from "react-icons/md";
 
@@ -45,9 +45,28 @@ const Article3 = () => {
                 .blog-post p {
                     font-size: 13px;
                 }
+                .share-buttons {
+                    display: flex;
+                    gap: 10px;
+                    margin-top: 20px;
+                }
+                .share-buttons button {
+                    padding: 10px 20px;
+                    font-size: 14px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                .share-button {
+                    background-color: #007bff;
+                    color: white;
+                }
+                .copy-link-button {
+                    background-color: #28a745;
+                    color: white;
+                }
                 `}
             </style>
-            
             <article className="blog-post text-black">
                 <img src={Algo} alt="algo" className='w-100 shadow-lg rounded' />
                 <h2 className="display-4 link-body-emphasis my-4"><b>{articleTitle}</b></h2>
@@ -83,7 +102,8 @@ const Article3 = () => {
                 <pre><code>{`<code snippet example>`}</code></pre>
                 <p>By starting with data, you're setting the stage for a more successful, user-friendly, and effective website.</p>
              
-            <div className="share-buttons w3-padding-16">
+                
+                <div className="share-buttons w3-padding-16">
                     <button className="share-button btn btn-black shadow px-2 btn-sm" onClick={handleShare}>share  <FaShare style={{fontSize:'1rem'}}/></button>
                     <button className="copy-link-button btn btn-black shadow px-2 btn-sm mx-1" onClick={handleCopyLink}> copy <MdOutlineAddLink  style={{fontSize:'1rem'}}/></button>
               </div>

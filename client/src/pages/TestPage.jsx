@@ -1,18 +1,15 @@
 import React, { useRef, useEffect } from 'react';
-import Slide1 from '../components/BlogComponents/Slides/Slide1';
 import Article1 from '../components/BlogComponents/Articles/Article1';
 import Article2 from '../components/BlogComponents/Articles/Article2';
 import Article3 from '../components/BlogComponents/Articles/Article3';
 import Article4 from '../components/BlogComponents/Articles/Article4';
 import Article5 from '../components/BlogComponents/Articles/Article5';
-import MeWhite from '../assets/images/MeWhite.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const BlogPage = ({ currentArticleIndex, setCurrentArticleIndex }) => {
   const articleRef = useRef(null);
 
   const articles = [
-    { component: <div><Slide1 /></div> },
     { component: <div><Article1 /></div> },
     { component: <div><Article2 /></div> },
     { component: <div><Article3 /></div> },
@@ -45,11 +42,13 @@ const BlogPage = ({ currentArticleIndex, setCurrentArticleIndex }) => {
   return (
     
     <div className='w3-padding-32'>
-      <main className="container">
-        <div className="row g-3 justify-content-between w3-margin-top">
+      <main className="container w3-margin-top">
+        <div className="row g-3 justify-content-center ">
           <div className="col-md-8">
             {/* Pagination */}
-          {/* Render selected article */}
+            <div className="container-fluid d-flex justify-content-center w3-padding-large w3-padding-top-24">
+              <div className="container-fluid d-flex flex-column align-items-center">
+                {/* Render selected article */}
                 <div className='article-render'>
                   <div className="w-100" ref={articleRef}>
                     {articles[currentArticleIndex].component}
@@ -76,24 +75,15 @@ const BlogPage = ({ currentArticleIndex, setCurrentArticleIndex }) => {
                   </button>
                 </div>
               </div>
-          
+            </div>
+          </div>
           {/** Article rendering container */}
           <div className="col-md-4" >
          
   <div className="position-sticky justify-content-center align-items-center">
-<div className="w3-padding-large">
+<div className="w3-padding-large w3-padding-top-24">
+<div className='w3-black'>
 
-
-      <img src={MeWhite} alt="me" className='w-100 shadow rounded-5 border-b-2'/>
-      <div className="w-100 mt-2 w3-padding-small">
-                <h4>Carol Wargo</h4>
-                <p className="mb-0" style={{fontSize:'14px'}}>
-                  Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.
-                </p>
-                </div>
-             
-          
-   {/*Recent Posts container */}
     <div className="card w3-black recent-posts-container">
  
 <div className='w3-padding-large w3-padding-top-16 justify-content-center align-items-center'>
@@ -167,6 +157,7 @@ const BlogPage = ({ currentArticleIndex, setCurrentArticleIndex }) => {
   </div>
 </div>
 </div>
+        </div>
       </main>
     </div>
   );

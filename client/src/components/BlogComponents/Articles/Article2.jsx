@@ -1,5 +1,5 @@
 import React from 'react';
-import Algo from "../../../../assets/images/Algos.jpeg";
+import Algo from "../../../assets/images/Algos.jpeg";
 import { FaShare } from "react-icons/fa6";
 import { MdOutlineAddLink } from "react-icons/md";
 
@@ -82,10 +82,7 @@ const article2 = () => {
                     <h4><i>"Without big data analytics, companies are blind and deaf, wandering out onto the web like deer on a freeway."</i> <span style={{fontSize:'14px'}}>- Geoffrey Moore</span></h4>
                 </blockquote>
                 <p>Understanding the different categories of data analytics can help you gain a comprehensive view of your website’s performance and identify areas for improvement.</p>
-                
-                {/* Add your article content here */}
-                
-              
+           
             <div className="share-buttons w3-padding-16">
                     <button className="share-button btn btn-black shadow px-2 btn-sm" onClick={handleShare}>share  <FaShare style={{fontSize:'1rem'}}/></button>
                     <button className="copy-link-button btn btn-black shadow px-2 btn-sm mx-1" onClick={handleCopyLink}> copy <MdOutlineAddLink  style={{fontSize:'1rem'}}/></button>

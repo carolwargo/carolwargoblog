@@ -1,5 +1,5 @@
 import React from 'react';
-import Algo from "../../../../assets/images/Algos.jpeg";
+import Algo from "../../../assets/images/Algos.jpeg";
 import { FaShare } from "react-icons/fa6";
 import { MdOutlineAddLink } from "react-icons/md";
 
@@ -40,10 +40,30 @@ const Article5 = () => {
     return (
         <div className='article5' id='article5'>
             {/**UNDERSTANDING ALGORITHMS */}
-           <style>
+            <style>
                 {`
                 .blog-post p {
                     font-size: 13px;
+                }
+                .share-buttons {
+                    display: flex;
+                    gap: 10px;
+                    margin-top: 20px;
+                }
+                .share-buttons button {
+                    padding: 10px 20px;
+                    font-size: 14px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                .share-button {
+                    background-color: #007bff;
+                    color: white;
+                }
+                .copy-link-button {
+                    background-color: #28a745;
+                    color: white;
                 }
                 `}
             </style>

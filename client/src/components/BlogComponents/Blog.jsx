@@ -1,5 +1,5 @@
 import React from 'react';
-import ArticleRendering from './Articles/ArticleRendering';
+import ArticleRendering from '../Articles/ArticleRendering';
 import SubscribeModal from '../Modal/SubscribeModal';
 import { CiHome } from "react-icons/ci";
 import { Link } from 'react-router-dom';  
