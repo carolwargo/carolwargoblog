@@ -3,9 +3,9 @@ import { Navbar, Container, Nav, NavDropdown} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { FaQuestionCircle } from "react-icons/fa";
+//import { FaQuestionCircle } from "react-icons/fa";
 import { AiTwotoneMail } from "react-icons/ai";
-import { TbScreenShare } from "react-icons/tb";
+//import { TbScreenShare } from "react-icons/tb";
 
 
 const TopNavbar = () => {
@@ -74,11 +74,9 @@ const TopNavbar = () => {
             
           </Nav>
           <Nav className='ml-auto'>
-          <Link to="/demo" className="nav-link text-white" onClick={handleNavLinkClick} style={{fontSize:'14px'}}>SLIDE DEMO<TbScreenShare className='mx-2' 
-          style={{fontSize:'16px'}}/></Link>
-            <Link to="/contact" className="nav-link text-white" onClick={handleNavLinkClick}><AiTwotoneMail /></Link>
-            <Link to="/help" className="nav-link text-white" onClick={handleNavLinkClick}><FaQuestionCircle/></Link>
-          </Nav>
+        
+            <Link to="/contact" className="nav-link text-white" onClick={handleNavLinkClick}> <AiTwotoneMail /></Link>
+        </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
