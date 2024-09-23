@@ -16,7 +16,10 @@ import Article5 from "./components/BlogComponents/Articles/Article5.jsx";
 import Slide1 from "./components/BlogComponents/Slides/Slide1.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import BlogPage from "./pages/BlogPage.jsx";
+import DemoPage from "./pages/DemoPage.jsx";
+import TopNav from "./components/Navs/TopNav.jsx";
 import Footer from "./components/Footer.jsx";
+import BlogHeader from "./components/BlogComponents/Headers/BlogHeader.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 
 function App() {
@@ -25,9 +28,13 @@ function App() {
     <div className="App">
       <BrowserRouter basename="carolwargoblog">
         <ErrorBoundary>
+          <TopNav />
+          <BlogHeader />
           <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/demo" element={<DemoPage />} />
 
-          <Route path="/" element={<HomePage setCurrentArticleIndex={setCurrentArticleIndex} />} />
+          <Route path="*" element={<HomePage setCurrentArticleIndex={setCurrentArticleIndex} />} />
         
         <Route 
           path="/blog" 
