@@ -1,5 +1,5 @@
 import React from 'react';
-import Algos from '../../../assets/images/Posts/Algos.jpeg';
+import Algo from "../../../../assets/images/Algos.jpeg";
 import { FaShare } from "react-icons/fa6";
 import { MdOutlineAddLink } from "react-icons/md";
 
@@ -7,7 +7,7 @@ const article2 = () => {
 
     const articleTitle = "Getting Started with Data Analytics: Five Key Focus Areas";
     const articleURL = window.location.href;
-    const articleImage = Algos;
+    const articleImage = Algo;
 
     const handleShare = () => {
         if (navigator.share) {
@@ -69,7 +69,7 @@ const article2 = () => {
             </style>
             
             <article className="blog-post text-black">
-                <img src={Algos} alt="Analytics" className='w-100 shadow-lg rounded' />
+                <img src={Algo} alt="Analytics" className='w-100 shadow-lg rounded' />
                 <h2 className="display-4 link-body-emphasis my-4">
                     <b>{articleTitle}</b></h2>
                 <p className="blog-post-meta">August 8, 2024 by <a href="/blog">author</a></p>

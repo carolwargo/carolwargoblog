@@ -26,7 +26,9 @@ const Editor = React.forwardRef((props, ref) => {
         value={editor}
         onChange={handleChange}
         ref={quillRef} // Attach ref directly to ReactQuill
-      />
+      >
+
+        </ReactQuill>
     </form>
   );
 });

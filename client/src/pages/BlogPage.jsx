@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from 'react';
-import Article1 from '../components/Blog/Articles/Article1';
-import Article2 from '../components/Blog/Articles/Article2';
-import Article3 from '../components/Blog/Articles/Article3';
-import Article4 from '../components/Blog/Articles/Article4';
-import Article5 from '../components/Blog/Articles/Article5';
+import Article1 from '../components/BlogComponents/Blog/Articles/Article1';
+import Article2 from '../components/BlogComponents/Blog/Articles/Article2';
+import Article3 from '../components/BlogComponents/Blog/Articles/Article3';
+import Article4 from '../components/BlogComponents/Blog/Articles/Article4';
+import Article5 from '../components/BlogComponents/Blog/Articles/Article5';
 //import Algo from '../assets/images/Posts/Algos.jpeg';
 //import MeWhite from '../assets/images/MeWhite.png';
 import 'bootstrap/dist/css/bootstrap.min.css';

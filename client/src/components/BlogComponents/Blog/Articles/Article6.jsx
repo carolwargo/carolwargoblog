@@ -1,5 +1,5 @@
 import React from 'react';
-import Algo from '../../../assets/images/Posts/Algos.jpeg';
+import Algo from "../../../../assets/images/Algos.jpeg";
 
 const Article6 = () => {
 

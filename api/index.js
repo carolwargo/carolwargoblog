@@ -97,17 +97,23 @@ app.post('/login', async (req, res, next) => {
   }
 });
 
-// Profile route with detailed error handling
-app.get('/profile', (req, res, next) => {
+app.get('/profile', (req, res) => {
   const { token } = req.cookies;
-  jwt.verify(token, secret, {}, (err, info) => {
+
+  if (!token) {
+    return res.status(403).json({ error: 'Token not found' });
+  }
+
+  jwt.verify(token, secret, (err, info) => {
     if (err) {
-      console.error('JWT verification failed:', err);
-      return res.status(403).json({ error: 'Invalid token' });
+      return res.status(403).json({ error: 'Invalid or expired token' });
     }
+    
     res.json(info);
   });
 });
+
+
 
 // Logout route
 app.post('/logout', (req, res) => {

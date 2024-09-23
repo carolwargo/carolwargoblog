@@ -15,7 +15,7 @@ export default function PostPage() {
       try {
         const response = await fetch(`http://localhost:4000/post/${id}`);
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Failed to fetch post');
         }
         const data = await response.json();
         setPostInfo(data);
@@ -25,10 +25,10 @@ export default function PostPage() {
         setLoading(false);
       }
     };
-
+  
     fetchPost();
-  }, [id]); // Adding id to dependency array
-
+  }, [id]);
+  
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!postInfo) return <p>No post data available</p>;

@@ -1,24 +1,25 @@
-import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { UserContext } from "./UserContext";
+import {Link} from "react-router-dom";
+import {useContext, useEffect} from "react";
+import {UserContext} from "./UserContext";
+import { IoLogOut } from "react-icons/io5";
+import { MdOutlinePostAdd } from "react-icons/md";
 
-export default function PostsHeader() {
-  const { setUserInfo, userInfo } = useContext(UserContext);
-
+export default function Header() {
+  const {setUserInfo,userInfo} = useContext(UserContext);
   useEffect(() => {
-    fetch("http://localhost:4000/profile", {
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((userInfo) => {
+    fetch('http://localhost:4000/profile', {
+      credentials: 'include',
+    }).then(response => {
+      response.json().then(userInfo => {
         setUserInfo(userInfo);
       });
-  }, [setUserInfo]);  // Add setUserInfo as a dependency
+    });
+  }, [setUserInfo]);
 
   function logout() {
-    fetch("http://localhost:4000/logout", {
-      credentials: "include",
-      method: "POST",
+    fetch('http://localhost:4000/logout', {
+      credentials: 'include',
+      method: 'POST',
     });
     setUserInfo(null);
   }
@@ -26,28 +27,22 @@ export default function PostsHeader() {
   const username = userInfo?.username;
 
   return (
-    <div className="w3-container w3-content">
-      <header className="posts-header">
-        <Link to="/" className="logo">
-          MyBlog
-        </Link>
-        <nav>
-          {username && (
-            <>
-              <Link to="/create">Create new post</Link>
-              <button onClick={logout} className="logout-button">
-              Logout ({username})
-            </button>
-            </>
-          )}
-          {!username && (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-            </>
-          )}
-        </nav>
-      </header>
-    </div>
+    <header className="container-fluid shadow">
+      <Link to="/" className="logo">MyBlog</Link>
+      <nav>
+        {username && (
+          <>
+            <Link to="/create" style={{fontSize:'2rem'}}><MdOutlinePostAdd/> </Link>
+            <Link onClick={logout} style={{fontSize:'2rem'}}><IoLogOut/></Link>
+          </>
+        )}
+        {!username && (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+          </>
+        )}
+      </nav>
+    </header>
   );
 }
