@@ -8,14 +8,11 @@ import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import PostPage from "./pages/PostPage.jsx";
 */
-import IndexPage from "./pages/IndexPage.jsx";
-import Layout from './components/Layout.jsx';
+import HomePage from "./pages/HomePage.jsx";
 import BlogPage from './pages/BlogPage.jsx';
 import Footer from "./components/Footer.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 
-/* Test Pages */
-import { UserContextProvider } from "./components/UserContext.jsx";
 
 function App() {
 
@@ -23,19 +20,12 @@ function App() {
     <div className="App">
       <BrowserRouter basename="carolwargoblog">
         <ErrorBoundary>
-        <UserContextProvider>
           <Routes>
-      
-              <Route element={<Layout />}>
-                <Route path="/" element={<IndexPage />} />
-                <Route path="/blog" element={<BlogPage />} />
-              </Route>
-       
+            <Route path="/" element={<HomePage />} />
               <Route path="/blog" element={<BlogPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
-          </UserContextProvider>
         </ErrorBoundary>
       </BrowserRouter>
     </div>

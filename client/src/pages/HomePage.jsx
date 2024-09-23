@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import CityBG from '../assets/images/CityBG.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-//import { FaLongArrowAltRight } from "react-icons/fa";
 
 
 const HomePage = ({ setCurrentArticleIndex }) => {
