@@ -28,7 +28,7 @@ export default function Header() {
 
           @media (min-width: 769px) {
             .bg-image {
-              min-height: 100vh; /* Increase min-height for larger screens */
+              min-height: 90vh; /* Increase min-height for larger screens */
             }
           }
         `}
